@@ -1,0 +1,1 @@
+This calculator is developed with JQuery

@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+        .block {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            left: 250px;
+            top: 250px;
+            background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/H2chess_238e.png/90px-H2chess_238e.png");
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="table-responsive">
+                <table class="table center">
+                    <thead>
+                        <tr>
+                            <th>
+                                <button id="left" type="button" class="btn btn-success"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+                                <button id="right" type="button" class="btn btn-success"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+                                <button id="up" type="button" class="btn btn-success"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></button>
+                                <button id="down" type="button" class="btn btn-success"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
+                            </th>
+                            <th>
+                                <label id="teclado" class="radio-inline">
+                                    <input id="keyBoard" type="checkbox" name="optradio">
+                                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                </label>
+                            </th>
+                            <th>
+                                <button id="center" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-record" aria-hidden="true"></span></button>
+                            </th>
+                            <th>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <button id="pointer1" type="button" class="btn btn-default"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/H2chess_238e.png/90px-H2chess_238e.png" width="20" /> </button>
+                                    <button id="pointer2" type="button" class="btn btn-default"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/H2_tiling_334-7.png/90px-H2_tiling_334-7.png" width="20" /> </button>
+                                    <button id="pointer3" type="button" class="btn btn-default"> <img src="http://vignette4.wikia.nocookie.net/monster-legends-rumores/images/d/d1/Qin-fase1.png/revision/latest/scale-to-width-down/90?cb=20151111193831&path-prefix=es" width="20" /> </button>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="block"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+        $('#teclado').change(function () {
+            if ($('#keyBoard').is(':checked')) {
+                $(document).keydown(function (e) {
+                    switch (e.which) {
+                    case 37: //left arrow key
+                        $(".block").finish().animate({
+                            left: "-=50"
+                        });
+                        break;
+                    case 38: //up arrow key
+                        $(".block").finish().animate({
+                            top: "-=50"
+                        });
+                        break;
+                    case 39: //right arrow key
+                        $(".block").finish().animate({
+                            left: "+=50"
+                        });
+                        break;
+                    case 40: //bottom arrow key
+                        $(".block").finish().animate({
+                            top: "+=50"
+                        });
+                        break;
+                    }
+                });
+            } else {
+                //Something for desactivate the Keyboard rows
+            }
+        });
+
+        $(document).ready(function () {
+            $('#left').click(function () {
+                $('.block').animate({
+                    'left': "-=50px"
+                });
+            });
+            $('#right').click(function () {
+                $('.block').animate({
+                    'left': "+=50px"
+                });
+            });
+            $('#down').click(function () {
+                $('.block').animate({
+                    'top': "+=50px"
+                });
+            });
+            $('#up').click(function () {
+                $('.block').animate({
+                    'top': "-=50px"
+                });
+            });
+            $('#center').click(function () {
+                $('.block').animate({
+                    'top': "250px"
+                });
+                $('.block').animate({
+                    'left': "250px"
+                });
+            });
+            $('#pointer1').click(function () {
+                $('.block').css(
+                    'background', "url(\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/H2chess_238e.png/90px-H2chess_238e.png\")"
+                );
+            });
+            $('#pointer2').click(function () {
+                $('.block').css(
+                    'background', "url(\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/H2_tiling_334-7.png/90px-H2_tiling_334-7.png\")"
+                );
+            });
+            $('#pointer3').click(function () {
+                $('.block').css(
+                    'background', "url(\"http://vignette4.wikia.nocookie.net/monster-legends-rumores/images/d/d1/Qin-fase1.png/revision/latest/scale-to-width-down/90?cb=20151111193831&path-prefix=es\")"
+                );
+            });
+        });
+    </script>
+</body>
+
+</html>
